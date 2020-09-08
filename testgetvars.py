@@ -1,5 +1,5 @@
 import unittest
-import getKMvars
+import getKMdata
 
 
 class MyTestCase(unittest.TestCase):

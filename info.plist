@@ -6,6 +6,19 @@
 	<string>com.kevinfunderburg.searchKMvariables</string>
 	<key>connections</key>
 	<dict>
+		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>368744CA-9CE8-423A-A6F9-7AE591B10450</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>F465E1CF-1023-4618-98DD-140098F68A71</key>
 		<array>
 			<dict>
@@ -30,6 +43,55 @@
 	<string>Keyboard Maestro - Search Variables</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>kmv</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>getting variables...</string>
+				<key>script</key>
+				<string>python getKMdata.py -v /</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>type 'kmv' to view variables</string>
+				<key>title</key>
+				<string>view value of Keyboard Maestro variables</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F465E1CF-1023-4618-98DD-140098F68A71</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -86,56 +148,7 @@ on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>kvars</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>getting variables..</string>
-				<key>script</key>
-				<string>python getKMvars.py</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>type 'kvars' to view variables</string>
-				<key>title</key>
-				<string>view value of Keyboard Maestro variables</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>F465E1CF-1023-4618-98DD-140098F68A71</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>kclips</string>
+				<string>kmc</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -147,13 +160,13 @@ on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	
 				<key>runningsubtext</key>
 				<string>getting clipboards..</string>
 				<key>script</key>
-				<string>python getclips.py</string>
+				<string>python getKMdata.py -c /</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>type 'kclips' to view clipboards</string>
+				<string>type 'kmc' to view clipboards</string>
 				<key>title</key>
 				<string>view Keyboard Maestro clipboards</string>
 				<key>type</key>
@@ -168,11 +181,61 @@ on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv
+  	log "argv is: " &amp; argv
+	set {cname, cuid} to split(item 1 of argv, ",")
+	log "cname: " &amp; cname &amp; return &amp; "cuid: " &amp; cuid
+	displayClip(cname, cuid)
+end run
+
+
+on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
+	&lt;key&gt;MacroActionType&lt;/key&gt;
+	&lt;string&gt;DisplayImage&lt;/string&gt;
+	&lt;key&gt;TargetNamedClipboardRedundantDisplayName&lt;/key&gt;
+	&lt;string&gt;" &amp; _name &amp; "&lt;/string&gt;
+	&lt;key&gt;TargetNamedClipboardUID&lt;/key&gt;
+	&lt;string&gt;" &amp; _id &amp; "&lt;/string&gt;
+	&lt;key&gt;TargetUseNamedClipboard&lt;/key&gt;
+	&lt;true/&gt;
+&lt;/dict&gt;"			tell application "Keyboard Maestro Engine" to do script scptend displayClip
+
+
+on split(theString, theSeparator)	local saveTID, theResult		set saveTID to AppleScript's text item delimiters	set AppleScript's text item delimiters to theSeparator	set theResult to text items of theString	set AppleScript's text item delimiters to saveTID	return theResultend split</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>368744CA-9CE8-423A-A6F9-7AE591B10450</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>368744CA-9CE8-423A-A6F9-7AE591B10450</key>
+		<dict>
+			<key>xpos</key>
+			<integer>235</integer>
+			<key>ypos</key>
+			<integer>155</integer>
+		</dict>
 		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
 		<dict>
 			<key>xpos</key>
