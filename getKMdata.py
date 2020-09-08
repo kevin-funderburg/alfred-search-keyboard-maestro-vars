@@ -20,8 +20,8 @@ CLIPS_PLIST = KM_APP_SUPPORT + "Keyboard Maestro Clipboards.plist"
 ICON_KM_VAR = KM_APP_RESOURCES + "Variable.icns"
 ICON_KM_CLIP = KM_APP_RESOURCES + "ClipboardIcon.icns"
 
-wf = None
-log = None
+# wf = None
+# log = None
 
 
 # noinspection PyProtectedMember

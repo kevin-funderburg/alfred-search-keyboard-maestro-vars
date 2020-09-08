@@ -258,6 +258,8 @@ on split(theString, theSeparator)	local saveTID, theResult		set saveTID to Ap
 			<integer>35</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>1.0.0</string>
 	<key>webaddress</key>
 	<string>www.github.com/kevin-funderburg</string>
 </dict>
