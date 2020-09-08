@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.kevinfunderburg.searchKMvariables</string>
+	<key>connections</key>
+	<dict>
+		<key>F465E1CF-1023-4618-98DD-140098F68A71</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Kevin Funderburg</string>
+	<key>description</key>
+	<string>search and view all the variables stored in Keyboard Maestro</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Keyboard Maestro - Search Variables</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>use scripting additionsuse kl : script "Kevin's Library"
+
+on run argv
+	set q to encodeXML(item 1 of argv)
+	tell application "Keyboard Maestro Engine"				do script "&lt;dict&gt;
+		&lt;key&gt;Action&lt;/key&gt;
+		&lt;string&gt;DisplayWindow&lt;/string&gt;
+		&lt;key&gt;MacroActionType&lt;/key&gt;
+		&lt;string&gt;InsertText&lt;/string&gt;
+		&lt;key&gt;StyledText&lt;/key&gt;
+		&lt;data&gt;&lt;/data&gt;
+		&lt;key&gt;Text&lt;/key&gt;
+		&lt;string&gt;" &amp; q &amp; "&lt;/string&gt;
+	&lt;/dict&gt;"
+	end tell
+end run
+
+on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	set str to kl's SearchandReplace(str, "\"", "\\\"")	return strend encodeXML</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>kvars</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>getting variables..</string>
+				<key>script</key>
+				<string>python getKMvars.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>type 'kvars' to view variables</string>
+				<key>title</key>
+				<string>view value of Keyboard Maestro variables</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>F465E1CF-1023-4618-98DD-140098F68A71</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>kclips</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>getting clipboards..</string>
+				<key>script</key>
+				<string>python getclips.py</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>type 'kclips' to view clipboards</string>
+				<key>title</key>
+				<string>view Keyboard Maestro clipboards</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>976D393D-46DE-45CD-B8BF-083333650B0D</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>155</integer>
+		</dict>
+		<key>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>235</integer>
+			<key>ypos</key>
+			<integer>35</integer>
+		</dict>
+		<key>F465E1CF-1023-4618-98DD-140098F68A71</key>
+		<dict>
+			<key>xpos</key>
+			<integer>10</integer>
+			<key>ypos</key>
+			<integer>35</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>www.github.com/kevin-funderburg</string>
+</dict>
+</plist>
