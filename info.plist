@@ -23,7 +23,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</string>
+				<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -100,24 +100,9 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>use scripting additionsuse kl : script "Kevin's Library"
-
-on run argv
-	set q to encodeXML(item 1 of argv)
-	tell application "Keyboard Maestro Engine"				do script "&lt;dict&gt;
-		&lt;key&gt;Action&lt;/key&gt;
-		&lt;string&gt;DisplayWindow&lt;/string&gt;
-		&lt;key&gt;MacroActionType&lt;/key&gt;
-		&lt;string&gt;InsertText&lt;/string&gt;
-		&lt;key&gt;StyledText&lt;/key&gt;
-		&lt;data&gt;&lt;/data&gt;
-		&lt;key&gt;Text&lt;/key&gt;
-		&lt;string&gt;" &amp; q &amp; "&lt;/string&gt;
-	&lt;/dict&gt;"
-	end tell
-end run
-
-on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	set str to kl's SearchandReplace(str, "\"", "\\\"")	return strend encodeXML</string>
+				<string>on run argv	--set argv to {"currentSeed", "2467"}
+	set {_name, val} to argv	set dialogResult to ¬		display dialog (val) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Cancel", "Update", "OK"} ¬			default button ("OK") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell	end if	
+	display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)end run</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -128,7 +113,7 @@ on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</string>
+			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -190,8 +175,7 @@ on encodeXML(str)	set str to kl's SearchandReplace(str, "&amp;", "&amp;amp;")	
 				<integer>68</integer>
 				<key>script</key>
 				<string>on run argv
-  	log "argv is: " &amp; argv
-	set {cname, cuid} to split(item 1 of argv, ",")
+	set {cname, cuid} to argv
 	log "cname: " &amp; cname &amp; return &amp; "cuid: " &amp; cuid
 	displayClip(cname, cuid)
 end run
@@ -206,10 +190,7 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 	&lt;string&gt;" &amp; _id &amp; "&lt;/string&gt;
 	&lt;key&gt;TargetUseNamedClipboard&lt;/key&gt;
 	&lt;true/&gt;
-&lt;/dict&gt;"			tell application "Keyboard Maestro Engine" to do script scptend displayClip
-
-
-on split(theString, theSeparator)	local saveTID, theResult		set saveTID to AppleScript's text item delimiters	set AppleScript's text item delimiters to theSeparator	set theResult to text items of theString	set AppleScript's text item delimiters to saveTID	return theResultend split</string>
+&lt;/dict&gt;"			tell application "Keyboard Maestro Engine" to do script scptend displayClip</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -229,6 +210,13 @@ on split(theString, theSeparator)	local saveTID, theResult		set saveTID to Ap
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>36527D9E-2928-4FC5-B591-E45B329F61DB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>235</integer>
+			<key>ypos</key>
+			<integer>35</integer>
+		</dict>
 		<key>368744CA-9CE8-423A-A6F9-7AE591B10450</key>
 		<dict>
 			<key>xpos</key>
@@ -242,13 +230,6 @@ on split(theString, theSeparator)	local saveTID, theResult		set saveTID to Ap
 			<integer>10</integer>
 			<key>ypos</key>
 			<integer>155</integer>
-		</dict>
-		<key>DD2FE954-2FF3-42B1-A23A-F389208E7DFC</key>
-		<dict>
-			<key>xpos</key>
-			<integer>235</integer>
-			<key>ypos</key>
-			<integer>35</integer>
 		</dict>
 		<key>F465E1CF-1023-4618-98DD-140098F68A71</key>
 		<dict>

@@ -20,8 +20,8 @@ CLIPS_PLIST = KM_APP_SUPPORT + "Keyboard Maestro Clipboards.plist"
 ICON_KM_VAR = KM_APP_RESOURCES + "Variable.icns"
 ICON_KM_CLIP = KM_APP_RESOURCES + "ClipboardIcon.icns"
 
-# wf = None
-# log = None
+wf = None
+log = None
 
 
 # noinspection PyProtectedMember
@@ -53,7 +53,7 @@ def main(wf):
                 it = wf.add_item(uid=value,
                                  title=name,
                                  subtitle=sub,
-                                 arg=value,
+                                 arg=[name,value],
                                  autocomplete=name,
                                  valid=True,
                                  icon=ICON_KM_VAR,
@@ -69,7 +69,7 @@ def main(wf):
             it = wf.add_item(uid=uid,
                              title=name,
                              subtitle='view in window',
-                             arg=name + "," + uid,
+                             arg=[name, uid],
                              autocomplete=name,
                              valid=True,
                              icon=ICON_KM_CLIP,
