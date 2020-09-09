@@ -31,6 +31,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>DF78BC78-5104-4673-80E7-BC04093A2DE9</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -43,6 +53,31 @@
 	<string>Keyboard Maestro - Search Variables</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv	--set argv to {"currentSeed", "2467"}
+	set {_name, val} to argv	set dialogResult to ¬		display dialog (val) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Cancel", "Update", "OK"} ¬			default button ("OK") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell	end if	
+	display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -100,9 +135,14 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>on run argv	--set argv to {"currentSeed", "2467"}
-	set {_name, val} to argv	set dialogResult to ¬		display dialog (val) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Cancel", "Update", "OK"} ¬			default button ("OK") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell	end if	
-	display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)end run</string>
+				<string>on run argv
+	set {_name, _val} to argv
+
+	tell application "Keyboard Maestro Engine"
+		setvariable _name to "%Delete%"
+	end tell
+
+end run</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -113,7 +153,7 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
+			<string>DF78BC78-5104-4673-80E7-BC04093A2DE9</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -222,12 +262,21 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 			<key>xpos</key>
 			<integer>235</integer>
 			<key>ypos</key>
-			<integer>155</integer>
+			<integer>285</integer>
 		</dict>
 		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
 		<dict>
 			<key>xpos</key>
 			<integer>10</integer>
+			<key>ypos</key>
+			<integer>285</integer>
+		</dict>
+		<key>DF78BC78-5104-4673-80E7-BC04093A2DE9</key>
+		<dict>
+			<key>note</key>
+			<string>delete var</string>
+			<key>xpos</key>
+			<integer>235</integer>
 			<key>ypos</key>
 			<integer>155</integer>
 		</dict>

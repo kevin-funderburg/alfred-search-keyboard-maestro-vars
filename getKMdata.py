@@ -48,7 +48,7 @@ def main(wf):
                 if len(value) < 100:
                     sub = value
                 else:
-                    sub = 'show in window'
+                    sub = 'press ↩︎ to view in window'
 
                 it = wf.add_item(uid=value,
                                  title=name,
@@ -59,7 +59,7 @@ def main(wf):
                                  icon=ICON_KM_VAR,
                                  icontype="filepath",
                                  quicklookurl=value)
-                it.add_modifier('cmd', subtitle="placeholder", arg=value, valid=True)
+                it.add_modifier('cmd', subtitle="delete '" + name + "'", arg=[name,value], valid=True)
 
     elif args.clips:
         clips_pl = plistlib.readPlist(CLIPS_PLIST)
@@ -68,7 +68,7 @@ def main(wf):
             uid = clip['UID']
             it = wf.add_item(uid=uid,
                              title=name,
-                             subtitle='view in window',
+                             subtitle='press ↩︎ to view',
                              arg=[name, uid],
                              autocomplete=name,
                              valid=True,
@@ -80,11 +80,6 @@ def main(wf):
         wf.add_item('No items found', icon=ICON_WARNING)
 
     wf.send_feedback()
-
-
-def count_lines(txt):
-    assert isinstance(txt, str)
-    return txt.find('\n')
 
 
 def create_connection(db_file):
