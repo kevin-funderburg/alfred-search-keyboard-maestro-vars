@@ -301,6 +301,8 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 			<integer>35</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
 	<string>1.0.0</string>
 	<key>webaddress</key>
