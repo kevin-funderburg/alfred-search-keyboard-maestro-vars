@@ -110,37 +110,6 @@
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>on run argv
-	set {_name, val} to argv
-	set diag to val &amp; return &amp; ¬
-		"⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" &amp; return &amp; ¬
-		"Close:	Close this dialog" &amp; return &amp; ¬
-		"Update:	Change value of '" &amp; _name &amp; "'"	
-	set dialogResult to ¬		display dialog (diag) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Update", "Close"} ¬			default button ("Close") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell
-			display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)	end if	
-end run</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
 				<string>osascript var_viewer.scptd "$1" "$2"</string>
@@ -166,13 +135,16 @@ end run</string>
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>on run argv
+				<string>use scripting additions
+
+on run argv
 	set {_name, _val} to argv
 
 	tell application "Keyboard Maestro Engine"
 		setvariable _name to "%Delete%"
 	end tell
 
+	display notification ("'" &amp; _name &amp; "' deleted")
 end run</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -278,16 +250,9 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Search all Keyboard Maestro variables and clipboards.</string>
 	<key>uidata</key>
 	<dict>
-		<key>36527D9E-2928-4FC5-B591-E45B329F61DB</key>
-		<dict>
-			<key>xpos</key>
-			<integer>235</integer>
-			<key>ypos</key>
-			<integer>35</integer>
-		</dict>
 		<key>368744CA-9CE8-423A-A6F9-7AE591B10450</key>
 		<dict>
 			<key>xpos</key>
@@ -297,13 +262,19 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 		</dict>
 		<key>69E79431-C1D2-4F73-AE71-F8C90760C9B9</key>
 		<dict>
+			<key>note</key>
+			<string>open in editor</string>
 			<key>xpos</key>
-			<integer>375</integer>
+			<integer>235</integer>
 			<key>ypos</key>
-			<integer>120</integer>
+			<integer>35</integer>
 		</dict>
 		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>9</integer>
+			<key>note</key>
+			<string>search clipboards</string>
 			<key>xpos</key>
 			<integer>10</integer>
 			<key>ypos</key>
@@ -320,6 +291,10 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 		</dict>
 		<key>F465E1CF-1023-4618-98DD-140098F68A71</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>search variables</string>
 			<key>xpos</key>
 			<integer>10</integer>
 			<key>ypos</key>
@@ -329,6 +304,6 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 	<key>version</key>
 	<string>1.0.0</string>
 	<key>webaddress</key>
-	<string>www.github.com/kevin-funderburg</string>
+	<string>https://github.com/kevin-funderburg/alfred-search-keyboard-maestro-vars</string>
 </dict>
 </plist>

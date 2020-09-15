@@ -7,7 +7,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.kfunderburg.km-var-viewer</string>
 	<key>CFBundleVersion</key>
-	<string>82</string>
+	<string>101</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 funderburg, All Rights Reserved</string>
 </dict>

@@ -54,22 +54,9 @@
 \f0\b0  
 \f1\b \cf8 run
 \f0\b0 \cf3  \cf7 argv\cf3 \
-	\cf2 --tell application "System Events"\cf3 \
-	\cf2 --	activate\cf3 \
-	\cf2 --	set frontapp to name of first process whose frontmost is true\cf3 \
-	\cf2 --	set scriptRunner to name of current application\cf3 \
-	\cf2 --	set dialogResult to \'ac\cf3 \
-	\cf2 --		display dialog (frontapp & return & return & scriptRunner) \'ac\cf3 \
-	\cf2 --			with title ("title") \'ac\cf3 \
-	\cf2 --			default answer ("answer") \'ac\cf3 \
-	\cf2 --			buttons \{"Cancel", "OK"\} \'ac\cf3 \
-	\cf2 --			default button ("OK") \'ac\cf3 \
-	\cf2 --			with icon note\cf3 \
-	\cf2 --		\cf3 \
-	\cf2 --end tell\cf3 \
 	\
-	\cf2 --tell application frontapp\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b if
 \f0\b0  
 \f2 \cf6 class
@@ -79,23 +66,28 @@
 \f2 \cf6 script
 \f0 \cf3  
 \f1\b then
-\f0\b0 \
+\f0\b0  \cf2 -- for testing\cf3 \
 		
 \f1\b set
 \f0\b0  \cf7 argv\cf3  
 \f1\b to
 \f0\b0  \{"_path", "System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icn"\}\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b end
 \f0\b0  
 \f1\b if
 \f0\b0 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 _name\cf3 , \cf7 val\cf3 \} 
 \f1\b to
 \f0\b0  \cf7 argv\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 width\cf3 , \cf7 height\cf3 \} 
 \f1\b to
@@ -127,17 +119,11 @@
 \f1\b if
 \f0\b0  \cf7 fieldHeight\cf3  > \cf7 maxFieldHeight\cf3  
 \f1\b then
-\f0\b0 \
-		
+\f0\b0  
 \f1\b set
 \f0\b0  \cf7 fieldHeight\cf3  
 \f1\b to
 \f0\b0  \cf7 maxFieldHeight\cf3 \
-	
-\f1\b end
-\f0\b0  
-\f1\b if
-\f0\b0 \
 	
 \f1\b set
 \f0\b0  \cf7 maxWidth\cf3  
@@ -168,40 +154,49 @@
 \f0\b0  \cf7 accWidth\cf3  
 \f1\b to
 \f0\b0  \cf7 maxWidth\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b else
 \f0\b0  
 \f1\b if
 \f0\b0  \cf7 accWidth\cf3  < \cf7 minWidth\cf3  
 \f1\b then
 \f0\b0 \
-		
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 		
 \f1\b set
 \f0\b0  \cf7 accWidth\cf3  
 \f1\b to
 \f0\b0  \cf7 minWidth\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b end
 \f0\b0  
 \f1\b if
 \f0\b0 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \cf7 accViewWidth\cf3  
 \f1\b to
 \f0\b0  \cf7 accWidth\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 theButtons\cf3 , \cf7 minWidth\cf3 \} 
 \f1\b to
 \f0\b0  \'ac\
 		
 \f2 \cf11 create buttons
-\f0 \cf3  \{"Cancel", "Delete", "Update", "OK"\} \'ac\
-			\cf12 button keys\cf3  \{"", "d", "u", "c"\} \'ac\
-			\cf12 default button\cf3  \cf10 4\cf3  \'ac\
-			\cf12 cancel button\cf3  \cf10 1\cf3 \
-	
+\f0 \cf3  \{"Cancel", "Delete", "OK"\} \'ac\
+			\cf12 button keys\cf3  \{"", "d", ""\} \'ac\
+			\cf12 default button\cf3  \cf10 3\cf3  \'ac\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			\cf12 cancel button\cf3  \cf10 1\cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b if
 \f0\b0  \cf7 minWidth\cf3  > \cf7 accViewWidth\cf3  
 \f1\b then
@@ -211,54 +206,87 @@
 \f1\b to
 \f0\b0  \cf7 minWidth\cf3  \cf2 -- make sure buttons fit\cf3 \
 	
+\f1\b if
+\f0\b0  \cf7 lineCount\cf3  > \cf10 1\cf3  
+\f1\b then
+\f0\b0 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 		
 \f1\b set
 \f0\b0  \{\cf7 theField\cf3 , \cf7 theTop\cf3 \} 
 \f1\b to
 \f0\b0  \'ac\
-		
+			
 \f2 \cf11 create field
 \f0 \cf3  (\cf7 val\cf3 ) \'ac\
-			\cf12 placeholder text\cf3  ("Enter your text here") \'ac\
-			\cf12 bottom\cf3  \cf10 0\cf3  \'ac\
-			\cf12 field width\cf3  \cf7 accViewWidth\cf3  \'ac\
-			\cf12 extra height\cf3  \cf7 fieldHeight\cf3  \'ac\
-			
+				\cf12 placeholder text\cf3  ("Enter your text here") \'ac\
+				\cf12 bottom\cf3  \cf10 0\cf3  \'ac\
+				\cf12 field width\cf3  \cf7 accViewWidth\cf3  \'ac\
+				\cf12 extra height\cf3  \cf7 fieldHeight\cf3  \'ac\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 				
 \f1\b with
 \f0\b0  \cf12 accepts linebreak and tab\cf3 \
-	\
 	
+\f1\b else
+\f0\b0 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 		
+\f1\b set
+\f0\b0  \{\cf7 theField\cf3 , \cf7 theTop\cf3 \} 
+\f1\b to
+\f0\b0  \'ac\
+			
+\f2 \cf11 create field
+\f0 \cf3  (\cf7 val\cf3 ) \'ac\
+				\cf12 placeholder text\cf3  ("Enter your text here") \'ac\
+				\cf12 bottom\cf3  \cf10 0\cf3  \'ac\
+				\cf12 field width\cf3  \cf7 accViewWidth\cf3  \'ac\
+				\cf12 extra height\cf3  \cf7 fieldHeight\cf3  \'ac\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 				
+\f1\b without
+\f0\b0  \cf12 accepts linebreak and tab\cf3 \
+	
+\f1\b end
+\f0\b0  
+\f1\b if
+\f0\b0 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 regLabel\cf3 , \cf7 theTop\cf3 \} 
 \f1\b to
 \f0\b0  \'ac\
 		
 \f2 \cf11 create label
-\f0 \cf3  ("
-\f3\b \uc0\u8984 
-\f0\b0 U:" & 
+\f0 \cf3  ("OK:" & 
 \f2 \cf4 tab
-\f0 \cf3  & "Update" & 
+\f0 \cf3  & 
+\f2 \cf4 tab
+\f0 \cf3  & "Dismiss or set variable to new value" & 
 \f2 \cf4 return
 \f0 \cf3  & \'ac\
-			"
-\f3\b \uc0\u8984 
-\f0\b0 D:" & 
+			"Delete:" & 
 \f2 \cf4 tab
-\f0 \cf3  & "Delete" & 
+\f0 \cf3  & "Delete variable from Keyboard Maestro (
+\f3\b \uc0\u8984 
+\f0\b0 D)" & 
 \f2 \cf4 return
 \f0 \cf3  & \'ac\
-			"
+			"Cancel:" & 
+\f2 \cf4 tab
+\f0 \cf3  & "
 \f3\b \uc0\u9099 
-\f0\b0 :" & 
-\f2 \cf4 tab
-\f0 \cf3  & "Cancel") \'ac\
+\f0\b0 ") \'ac\
 			\cf12 bottom\cf3  \cf7 theTop\cf3  + \cf10 10\cf3  \'ac\
 			\cf12 max width\cf3  \cf7 accViewWidth\cf3  \'ac\
 			\cf12 left inset\cf3  \cf10 75\cf3  \'ac\
 			\cf12 control size\cf3  \cf13 regular size\cf3  \'ac\
-			\cf12 aligns\cf3  \cf13 left aligned\cf3 \
-	\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			\cf12 aligns\cf3  \cf13 left aligned\cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 theRule\cf3 , \cf7 theTop\cf3 \} 
 \f1\b to
@@ -267,9 +295,10 @@
 \f2 \cf11 create rule
 \f0 \cf3  (\cf7 theTop\cf3  + \cf10 12\cf3 ) \'ac\
 			\cf12 left inset\cf3  \cf10 75\cf3  \'ac\
-			\cf12 rule width\cf3  \cf7 accViewWidth\cf3  - \cf10 60\cf3 \
-	\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			\cf12 rule width\cf3  \cf7 accViewWidth\cf3  - \cf10 60\cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 boldLabel\cf3 , \cf7 theTop\cf3 \} 
 \f1\b to
@@ -282,10 +311,12 @@
 			\cf12 left inset\cf3  \cf10 75\cf3  \'ac\
 			\cf12 control size\cf3  \cf13 regular size\cf3  \'ac\
 			\cf12 aligns\cf3  \cf13 left aligned\cf3  \'ac\
-			
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			
 \f1\b with
 \f0\b0  \cf12 bold type\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 imgView\cf3 , \cf7 theTop\cf3 \} 
 \f1\b to
@@ -298,8 +329,10 @@
 			\cf12 view width\cf3  \cf10 50\cf3  \'ac\
 			\cf12 view height\cf3  \cf10 50\cf3  \'ac\
 			\cf12 scale image\cf3  \cf13 scale proportionally\cf3  \'ac\
-			\cf12 align image\cf3  \cf13 top left aligned\cf3 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			\cf12 align image\cf3  \cf13 top left aligned\cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \{\cf7 buttonName\cf3 , \cf7 controlsResults\cf3 \} 
 \f1\b to
@@ -312,33 +345,14 @@
 			\cf12 acc view controls\cf3  \{\cf7 theField\cf3 , \cf7 regLabel\cf3 , \cf7 theRule\cf3 , \cf7 boldLabel\cf3 , \cf7 imgView\cf3 \} \'ac\
 			\cf12 buttons\cf3  \cf7 theButtons\cf3  \'ac\
 			\cf12 active field\cf3  \cf7 theField\cf3  \'ac\
-			\cf12 initial position\cf3  \{\cf10 0\cf3 , \cf10 0\cf3 \} \'ac\
-			
+			\cf12 initial position\cf3  \{\} \'ac\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 			
 \f1\b with
 \f0\b0  \cf12 align cancel button\cf3 \
-	\cf2 --end tell\cf3 \
 	\
-	\cf2 --delay 3\cf3 \
-	\cf2 --tell application "System Events"\cf3 \
-	\cf2 --	activate\cf3 \
-	\cf2 --	set scriptRunner to name of current application\cf3 \
-	\cf2 --	set dialogResult to \'ac\cf3 \
-	\cf2 --		display dialog (scriptRunner) \'ac\cf3 \
-	\cf2 --			with title ("title") \'ac\cf3 \
-	\cf2 --			default answer ("answer") \'ac\cf3 \
-	\cf2 --			buttons \{"Cancel", "OK"\} \'ac\cf3 \
-	\cf2 --			default button ("OK") \'ac\cf3 \
-	\cf2 --			with icon note\cf3 \
-	\cf2 --	tell process "osascript"\cf3 \
-	\cf2 --		log "name of win: " & name of every window\cf3 \
-	\cf2 --		--set frontmost to true\cf3 \
-	\cf2 --		--tell window 1\cf3 \
-	\cf2 --		--	set value of attribute "AXMain" to true\cf3 \
-	\cf2 --		--end tell\cf3 \
-	\cf2 --	end tell\cf3 \
-	\cf2 --end tell\cf3 \
-	\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b if
 \f0\b0  \cf7 buttonName\cf3  = "OK" 
 \f1\b then
@@ -361,19 +375,16 @@
 \f1\b tell
 \f0\b0  
 \f2 \cf6 application
-\f0 \cf3  "Keyboard Maestro Engine"\
-				
+\f0 \cf3  "Keyboard Maestro Engine" 
+\f1\b to
+\f0\b0  
 \f1\b \cf8 setvariable
 \f0\b0 \cf3  \cf7 _name\cf3  \cf5 to\cf3  \cf7 newVal\cf3 \
 			
-\f1\b end
-\f0\b0  
-\f1\b tell
-\f0\b0 \
-			
 \f2 \cf11 display notification
 \f0 \cf3  ("'" & \cf7 _name\cf3  & "' updated to " & \cf7 newVal\cf3 )\
-		
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 		
 \f1\b end
 \f0\b0  
 \f1\b if
@@ -383,6 +394,7 @@
 \f0\b0  
 \f1\b if
 \f0\b0 \
+	\
 
 \f1\b end
 \f0\b0  
@@ -392,7 +404,8 @@
 
 \f1\b on
 \f0\b0  \cf9 getLongestLine\cf3 (\cf7 txt\cf3 )\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \cf7 max\cf3  
 \f1\b to
@@ -442,7 +455,8 @@
 \f0 \cf3  
 \f1\b of
 \f0\b0  \cf7 p\cf3 \
-		
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 		
 \f1\b end
 \f0\b0  
 \f1\b if
@@ -452,17 +466,20 @@
 \f0\b0  
 \f1\b repeat
 \f0\b0 \
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b return
 \f0\b0  \cf7 max\cf3 \
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
 
-\f1\b end
+\f1\b \cf3 end
 \f0\b0  \cf9 getLongestLine\cf3 \
 \
 
 \f1\b on
 \f0\b0  \cf9 screensize\cf3 ()\
-	
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf3 	
 \f1\b set
 \f0\b0  \cf7 theScreen\cf3  
 \f1\b to
@@ -501,7 +518,8 @@
 	
 \f1\b return
 \f0\b0  \{\cf7 width\cf3 , \cf7 height\cf3 \}\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
 
-\f1\b end
+\f1\b \cf3 end
 \f0\b0  \cf9 screensize\cf3 \
 }

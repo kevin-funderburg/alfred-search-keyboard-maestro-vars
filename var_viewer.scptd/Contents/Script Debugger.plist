@@ -40,7 +40,7 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 		<real>0.80000001192092896</real>
 		<key>viewControllers</key>
 		<dict>
-			<key>C685C78E-82FD-4EDB-A399-0EBBF07986D0-461-0000095A5245B6DB</key>
+			<key>A3630FCB-B1E9-405D-BF78-9101D438F6C6-526-000003905843201B</key>
 			<dict>
 				<key>debuggerViewState</key>
 				<dict>
@@ -67,9 +67,9 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 						<dict>
 							<key>3</key>
 							<array>
-								<integer>305</integer>
-								<integer>387</integer>
-								<integer>152</integer>
+								<integer>312</integer>
+								<integer>396</integer>
+								<integer>155</integer>
 							</array>
 							<key>5</key>
 							<array>
@@ -226,9 +226,9 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 						<dict>
 							<key>3</key>
 							<array>
-								<integer>82</integer>
-								<integer>142</integer>
-								<integer>643</integer>
+								<integer>85</integer>
+								<integer>147</integer>
+								<integer>669</integer>
 							</array>
 						</dict>
 					</dict>
@@ -265,8 +265,8 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 						<dict>
 							<key>2</key>
 							<array>
-								<integer>255</integer>
-								<integer>620</integer>
+								<integer>252</integer>
+								<integer>613</integer>
 							</array>
 						</dict>
 					</dict>
@@ -290,7 +290,7 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 								<key>length</key>
 								<integer>0</integer>
 								<key>location</key>
-								<integer>3779</integer>
+								<integer>907</integer>
 							</dict>
 						</array>
 						<key>LNSTextViewShowInvisibles</key>
@@ -302,7 +302,7 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 						<key>LNSTextViewWrapLines</key>
 						<true/>
 						<key>LNSVisibleRect</key>
-						<string>{{0, 2117.5}, {705, 635.5}}</string>
+						<string>{{0, 515}, {786, 694.5}}</string>
 						<key>ShowLineNumbers</key>
 						<false/>
 						<key>showCodeCoverage</key>
@@ -329,9 +329,9 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 				<key>tabsHidden</key>
 				<false/>
 				<key>windowControllerID</key>
-				<string>C685C78E-82FD-4EDB-A399-0EBBF07986D0-461-0000095A5245B6DB</string>
+				<string>A3630FCB-B1E9-405D-BF78-9101D438F6C6-526-000003905843201B</string>
 				<key>windowFrame</key>
-				<string>469 81 1191 946 0 0 1680 1027 </string>
+				<string>408 62 1272 965 0 0 1680 1027 </string>
 			</dict>
 		</dict>
 		<key>windowControllers</key>
@@ -340,13 +340,13 @@ XWJtdHV3fIeQn6OrAAAAAAAAAQEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAALQ=</string>
 				<key>controllerClass</key>
 				<string>ScriptWindowController</string>
 				<key>controllerID</key>
-				<string>C685C78E-82FD-4EDB-A399-0EBBF07986D0-461-0000095A5245B6DB</string>
+				<string>A3630FCB-B1E9-405D-BF78-9101D438F6C6-526-000003905843201B</string>
 				<key>controllerState</key>
 				<dict>
 					<key>miniaturized</key>
 					<false/>
 					<key>windowFrame</key>
-					<string>469 81 1191 946 0 0 1680 1027 </string>
+					<string>408 62 1272 965 0 0 1680 1027 </string>
 				</dict>
 			</dict>
 		</array>
