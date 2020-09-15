@@ -27,8 +27,8 @@ log = None
 # noinspection PyProtectedMember
 def main(wf):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-v', dest='vars', nargs='?', default=None)
-    parser.add_argument('-c', dest='clips', nargs='?', default=None)
+    parser.add_argument('-v', dest='vars', action='store_true')
+    parser.add_argument('-c', dest='clips', action='store_true')
     parser.add_argument('query', nargs='?', default=None)
     args = parser.parse_args(wf.args)
 

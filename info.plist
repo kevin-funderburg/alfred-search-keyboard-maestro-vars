@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.kevinfunderburg.searchKMvariables</string>
+	<string>com.kfunderburg.alfred-searchKMvariables</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
@@ -23,7 +25,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
+				<string>69E79431-C1D2-4F73-AE71-F8C90760C9B9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -56,31 +58,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>script</key>
-				<string>on run argv	--set argv to {"currentSeed", "2467"}
-	set {_name, val} to argv	set dialogResult to ¬		display dialog (val) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Cancel", "Update", "OK"} ¬			default button ("OK") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell	end if	
-	display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)end run</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -106,7 +83,7 @@
 				<key>runningsubtext</key>
 				<string>getting variables...</string>
 				<key>script</key>
-				<string>python getKMdata.py -v /</string>
+				<string>/usr/bin/python getKMdata.py -v</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -116,7 +93,7 @@
 				<key>title</key>
 				<string>view value of Keyboard Maestro variables</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -126,6 +103,60 @@
 			<string>F465E1CF-1023-4618-98DD-140098F68A71</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>on run argv
+	set {_name, val} to argv
+	set diag to val &amp; return &amp; ¬
+		"⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" &amp; return &amp; ¬
+		"Close:	Close this dialog" &amp; return &amp; ¬
+		"Update:	Change value of '" &amp; _name &amp; "'"	
+	set dialogResult to ¬		display dialog (diag) ¬			with title ("Value of Variable '" &amp; _name &amp; "'") ¬			default answer ("new value") ¬			buttons {"Update", "Close"} ¬			default button ("Close") ¬			with icon POSIX file "/System/Volumes/Data/Applications/Keyboard Maestro.app/Contents/Resources/Variable.icns" as alias		if button returned of dialogResult = "Update" then		tell application "Keyboard Maestro Engine"			setvariable _name to text returned of dialogResult		end tell
+			display notification ("'" &amp; _name &amp; "' updated to " &amp; text returned of dialogResult)	end if	
+end run</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>36527D9E-2928-4FC5-B591-E45B329F61DB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>osascript var_viewer.scptd "$1" "$2"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>69E79431-C1D2-4F73-AE71-F8C90760C9B9</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -185,7 +216,7 @@ end run</string>
 				<key>runningsubtext</key>
 				<string>getting clipboards..</string>
 				<key>script</key>
-				<string>python getKMdata.py -c /</string>
+				<string>/usr/bin/python getKMdata.py -c</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -195,7 +226,7 @@ end run</string>
 				<key>title</key>
 				<string>view Keyboard Maestro clipboards</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -263,6 +294,13 @@ on displayClip(_name, _id)	set scpt to "&lt;dict&gt;
 			<integer>235</integer>
 			<key>ypos</key>
 			<integer>285</integer>
+		</dict>
+		<key>69E79431-C1D2-4F73-AE71-F8C90760C9B9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>375</integer>
+			<key>ypos</key>
+			<integer>120</integer>
 		</dict>
 		<key>976D393D-46DE-45CD-B8BF-083333650B0D</key>
 		<dict>
